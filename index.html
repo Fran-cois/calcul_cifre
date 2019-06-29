@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cout d'une Cifre</title>
+    <style media="screen">
+      li {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    padding: 0;
+}
+    </style>
+  </head>
+  <body>
+    <center>
+    <h1>Calcul du coût d'une thèse Cifre pour une entreprise.</h1>
+      <h1> Entrez le salaire brut annuel (minimum 24000): </h1>
+      <input type="number" onchange="changeEventHandler(event);">
+
+      <h1 id="resultat">Coût réel pour l'entreprise: </h1>
+      <h1> <span id="myspan">  </span> </h1>
+      <h2> Détails: </h2>
+        <h3>Brut chargé:<span id="brut_charge">  </span> </h3>
+        <h3>Frais de fonctionnement (calcul pour l'assiette du cir):<span id="frais_fonctionnement">  </span></h3>
+        <h3>Subvention Publique:<span id="subvention_publique">  </span> </h3>
+        <h3>Assiette du cir:<span id="assiette_du_cir">  </span></h3>
+        <h3>CIR <span id="CIR">  </span></h3>
+        <h3>Cout total = brut_charge - subvention_publique - CIR </h3>
+
+
+    <a href="https://cache.media.enseignementsup-recherche.gouv.fr/file/Fiches_pratiques_Innovation/08/2/CIR-CIFRE_206082.pdf">
+    Source</a>
+
+
+</center>
+  </body>
+
+</html>
+<script type="text/javascript">
+  function changeEventHandler(event) {
+
+    var salaire_brut = event.target.value;
+    var brut_charge=salaire_brut*1.4;
+    document.getElementById("brut_charge").textContent = brut_charge + "€";
+
+    var frais_fonctionnement=brut_charge*0.50;
+    document.getElementById("frais_fonctionnement").textContent = frais_fonctionnement + "€";
+
+    var subvention_publique=14000;
+
+    document.getElementById("subvention_publique").textContent = subvention_publique + "€";
+
+    var assiette_du_cir=brut_charge + frais_fonctionnement -subvention_publique;
+    document.getElementById("assiette_du_cir").textContent = assiette_du_cir + "€";
+
+    var CIR= 0.3*assiette_du_cir;
+    document.getElementById("CIR").textContent = CIR + "€";
+
+    var cout_total=brut_charge - subvention_publique - CIR;
+    document.getElementById("myspan").textContent = cout_total + "€";
+    console.log(cout_total);
+
+    //resultat.innerHTML= cout_total;
+
+
+  }
+</script>
